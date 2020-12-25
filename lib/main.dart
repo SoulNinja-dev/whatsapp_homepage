@@ -1,64 +1,79 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      home: HomeScreen(),
+      home: MyTabbedPage(),
     ),
   );
 }
 
-class HomeScreen extends StatelessWidget {
+// ------------------------------------------------------------//
+class MyTabbedPage extends StatefulWidget {
+  const MyTabbedPage({Key key}) : super(key: key);
+  @override
+  _MyTabbedPageState createState() => _MyTabbedPageState();
+}
+
+class _MyTabbedPageState extends State<MyTabbedPage>
+    with SingleTickerProviderStateMixin {
+  final List<Tab> myTabs = <Tab>[
+    Tab(
+      icon: Icon(Icons.camera_alt),
+    ),
+    Tab(text: 'CHAT'),
+    Tab(text: 'STATUS'),
+    Tab(text: 'CALLS'),
+  ];
+
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: myTabs.length);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.teal.shade800,
         title: Text(
-          "WhatsApp",
-          style: TextStyle(color: Colors.white),
+          'WhatsApp',
+          style: TextStyle(fontSize: 20, color: Colors.white),
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
+            color: Colors.white,
+            icon: Icon(Icons.search),
             onPressed: null,
           ),
           IconButton(
-            icon: const Icon(
-              Icons.more_vert,
+              icon: Icon(Icons.more_vert),
               color: Colors.white,
-            ),
-            onPressed: null,
-          ),
+              onPressed: null),
         ],
-      ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-// row for chat calls status
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 5,
-                  child: FlatButton(
-                    child: Text(
-                      'CHAT',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    ),
-                    onPressed: null,
-                    color: Colors.teal.shade800,
-                  ),
-                ),
-              ],
-            ),
-
-// chat rows
-          ],
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: myTabs,
         ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: myTabs.map((Tab tab) {
+          return Center(
+            child: Text('Hi'),
+          );
+        }).toList(),
       ),
     );
   }
