@@ -71,7 +71,24 @@ class _MyTabbedPageState extends State<MyTabbedPage>
         controller: _tabController,
         children: myTabs.map((Tab tab) {
           return Center(
-            child: Text('Hi'),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Card(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10.0),
+                      child: ListTile(
+                        leading: CircleAvatar(backgroundColor: Colors.grey),
+                        title: Text('Aadhithyan'),
+                        subtitle: Text('hi bro'),
+                        trailing: Text('hi'),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           );
         }).toList(),
       ),
