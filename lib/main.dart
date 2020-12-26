@@ -69,28 +69,26 @@ class _MyTabbedPageState extends State<MyTabbedPage>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: myTabs.map((Tab tab) {
-          return Center(
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Card(
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      child: ListTile(
-                        leading: CircleAvatar(backgroundColor: Colors.grey),
-                        title: Text('Aadhithyan'),
-                        subtitle: Text('hi bro'),
-                        trailing: Text('hi'),
-                      ),
+        children: [
+          ListView(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Card(
+                    margin:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                    child: ListTile(
+                      leading: CircleAvatar(backgroundColor: Colors.grey),
+                      title: Text('Aadhithyan'),
+                      subtitle: Text('hi bro'),
+                      trailing: Text('9:30'),
                     ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        }).toList(),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
