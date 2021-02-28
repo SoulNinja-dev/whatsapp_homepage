@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class Chat extends StatelessWidget {
   final List<String> names = [
@@ -36,7 +35,7 @@ class Chat extends StatelessWidget {
   final List colors = [
     Colors.blue,
     Colors.green,
-    Colors.black,
+    Colors.white,
     Colors.teal,
     Colors.grey,
     Colors.red,
@@ -49,12 +48,15 @@ class Chat extends StatelessWidget {
     return Scaffold(body: ListView.builder(
       itemBuilder: (context, index) {
         return ListTile(
+          tileColor: Colors.black,
           leading: CircleAvatar(backgroundColor: colors[index]),
           title: Text(
             names[index],
+            style: TextStyle(color: Colors.white),
           ),
           subtitle: Text(
             message[index],
+            style: TextStyle(color: Colors.white),
           ),
         );
       },

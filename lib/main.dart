@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:whatsapp_homescreen/screens/Calls.dart';
 import 'package:whatsapp_homescreen/screens/Camera.dart';
 import 'package:whatsapp_homescreen/screens/Chat.dart';
 import 'package:whatsapp_homescreen/screens/Status.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(HomeScreen());
 
@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       home: DefaultTabController(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.teal.shade800,
+            backgroundColor: Color.fromRGBO(19, 28, 33, 100),
             title: Text(
               'WhatsApp',
               style: TextStyle(fontSize: 20, color: Colors.white),
